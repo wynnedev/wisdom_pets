@@ -13,9 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+"""
+pythex.org for more on regular expression
+urlpatterns= [url(regex), view.destination, name='page_name']
+"""
+
 from django.contrib import admin
+from django.conf.urls import url
 from django.urls import path
+from adoptions import views
+
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
+    url('^$', views.home, name='home'),
+    url('^adoptions/(\d+)/', views.pet_detail, name='pet_detail'),
 ]
