@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 # Create your models here.
 
@@ -9,9 +10,9 @@ class Pet(models.Model):
     submitter = models.CharField(max_length=100)
     species = models.CharField(max_length=100)
     breed = models.CharField(max_length=30, blank=True)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     sex = models.CharField(choices=SEX_CHOICES, max_length=1, blank=True)
-    submission_date = models.DateTimeField
+    submission_date = models.DateTimeField(default=now, blank=True)
     age = models.IntegerField(null=True)
 
     #Foreign key for Vaccine Object (many to many)
